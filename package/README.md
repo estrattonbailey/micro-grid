@@ -1,5 +1,5 @@
 # micro-grid
-Tiny, simple, zero-dependency flexbox grid for React.
+Tiny, simple, zero-dependency flexbox grid for React. [Demo](http://estrattonbailey.com/micro-grid/) 🍻
 
 [![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](http://standardjs.com)
 
