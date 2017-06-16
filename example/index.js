@@ -6,48 +6,141 @@ const App = props => (
   <div className="container">
     <h1>Micro Grid</h1>
 
-    <Flex center>
-      <Box w={[
+    <Flex wrap={true} gutter={1}>
+      <Box width={[
         [1],
         [500, 1/2],
         [1000, 1/4]
       ]}>
-        <div className="filler tomato"/>
+        <div className="filler">25%</div>
       </Box>
-      <Box w={[
+      <Box width={[
         [1],
         [500, 1/2],
         [1000, 1/4]
       ]}>
-        <div className="filler whitesmoke"/>
+        <div className="filler">25%</div>
       </Box>
-      <Box w={[
+      <Box width={[
         [1],
         [500, 1/2],
         [1000, 1/4]
       ]}>
 
-      <Flex g={1}>
-        <Box w={1/2}>
-          <div className="filler black"/>
+      <Flex gutter={1}>
+        <Box width={1/2}>
+          <div className="filler">50%</div>
         </Box>
-        <Box w={1/2}>
-          <div className="filler grey"/>
+        <Box width={1/2}>
+          <div className="filler">50%</div>
         </Box>
       </Flex>
 
       </Box>
-      <Box w={[
+      <Box width={[
         [1],
         [500, 1/2],
         [1000, 1/4]
       ]}>
-        <div className="filler black"/>
+        <div className="filler">25%</div>
       </Box>
     </Flex>
+
+    <Flex gutter={1} wrap={[
+      [true],
+      [500, false]
+    ]}>
+      <Box width={[
+        [1],
+        [500, '200px'],
+      ]}>
+        <div className="filler">
+          200px
+        </div>
+      </Box>
+      <Box width={[
+        [1],
+        [500, 3/4],
+        [500, 'auto'],
+      ]}>
+        <div className="filler">
+          flex-auto
+        </div>
+      </Box>
+    </Flex>
+
+    <div className="pv2">
+      <pre><code>
+        {`
+<Flex wrap={true} gutter={1}>
+  <Box width={[
+    [1],
+    [500, 1/2],
+    [1000, 1/4]
+  ]}>
+    <div className="filler">25%</div>
+  </Box>
+  <Box width={[
+    [1],
+    [500, 1/2],
+    [1000, 1/4]
+  ]}>
+    <div className="filler">25%</div>
+  </Box>
+  <Box width={[
+    [1],
+    [500, 1/2],
+    [1000, 1/4]
+  ]}>
+
+  <Flex gutter={1}>
+    <Box width={1/2}>
+      <div className="filler">50%</div>
+    </Box>
+    <Box width={1/2}>
+      <div className="filler">50%</div>
+    </Box>
+  </Flex>
+
+  </Box>
+  <Box width={[
+    [1],
+    [500, 1/2],
+    [1000, 1/4]
+  ]}>
+    <div className="filler">25%</div>
+  </Box>
+</Flex>
+
+<Flex gutter={1} wrap={[
+  [true],
+  [500, false]
+]}>
+  <Box width={[
+    [1],
+    [500, '200px'],
+  ]}>
+    <div className="filler">
+      200px
+    </div>
+  </Box>
+  <Box width={[
+    [1],
+    [500, 3/4],
+    [500, 'auto'],
+  ]}>
+    <div className="filler">
+      flex-auto
+    </div>
+  </Box>
+</Flex>
+`
+        }
+      </code></pre>
+    </div>
   </div>
 )
 
 render(<App/>, document.getElementById('root'))
 
-console.log(getCSS())
+console.log('micro-grid rendered CSS:\n\n', getCSS())

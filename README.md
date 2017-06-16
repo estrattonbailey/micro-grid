@@ -16,54 +16,108 @@ Grid with four items:
 import { Flex, Box } from 'micro-grid'
 
 <Flex>
-  <Box w={1/4}>25% wide</Box>
-  <Box w={1/4}>25% wide</Box>
-  <Box w={1/4}>25% wide</Box>
-  <Box w={1/4}>25% wide</Box>
+  <Box width={1/4}>25% wide</Box>
+  <Box width={1/4}>25% wide</Box>
+  <Box width={1/4}>25% wide</Box>
+  <Box width={1/4}>25% wide</Box>
 </Flex>
 ```
 
 Grid with four items and a `1em` gutter:
 ```javascript
-<Flex g={1}>
-  <Box w={1/4}>25% wide</Box>
-  <Box w={1/4}>25% wide</Box>
-  <Box w={1/4}>25% wide</Box>
-  <Box w={1/4}>25% wide</Box>
+<Flex gutter={1}>
+  <Box width={1/4}>25% wide</Box>
+  <Box width={1/4}>25% wide</Box>
+  <Box width={1/4}>25% wide</Box>
+  <Box width={1/4}>25% wide</Box>
 </Flex>
 ```
 
 Widths at different breakpoints:
 ```javascript
-<Flex g={1}>
-  <Box w={[
+<Flex gutter={1}>
+  <Box width={[
     [1/2],
     [768, 1/4]
   ]}>
     50% wide, 25% wide above 768px
   </Box>
-  <Box w={[
+  <Box width={[
     [1],
     [768, 1/2]
-    [1280, 1/4]
-  ]}>
+    [1280, 1/4] ]}>
     100% wide, 50% wide above 768px, 25% wide above 1280px
   </Box>
-  <Box w={1/4}>25% wide</Box>
-  <Box w={1/4}>25% wide</Box>
+  <Box width={1/4}>25% wide</Box>
+  <Box width={1/4}>25% wide</Box>
 </Flex>
 ```
 
 Adjust the gutter at different breakpoints:
 ```javascript
-<Flex g={[
+<Flex gutter={[
   [1],
   [768, 2]
 ]}>
-  <Box w={1/4}>25% wide</Box>
-  <Box w={1/4}>25% wide</Box>
-  <Box w={1/4}>25% wide</Box>
-  <Box w={1/4}>25% wide</Box>
+  <Box width={1/4}>25% wide</Box>
+  <Box width={1/4}>25% wide</Box>
+  <Box width={1/4}>25% wide</Box>
+  <Box width={1/4}>25% wide</Box>
+</Flex>
+```
+
+Fixed width columns:
+```javascript
+<Flex gutter={1}>
+  <Box width={[
+    [1],
+    [768, '200px']
+  ]}>1000% wide, 200px wide above 768px</Box>
+</Flex>
+```
+
+Flexible width columns, that fill their space:
+```javascript
+<Flex gutter={1}>
+  <Box width={[
+    [1],
+    [768, '200px']
+  ]}>1000% wide, 200px wide above 768px</Box>
+  <Box width={[
+    [1],
+    [768, 'auto']
+  ]}>1000% wide, fills remainging space above 768px</Box>
+</Flex>
+```
+
+Allow boxes to wrap:
+```javascript
+<Flex gutter={1} wrap={true}>
+  <Box width={[
+    [1],
+    [768, 1/2]
+  ]}>100% wide, 50% wide above 768</Box>
+  <Box width={[
+    [1],
+    [768, 1/2]
+  ]}>100% wide, 50% wide above 768</Box>
+</Flex>
+```
+
+Allow boxes to wrap at different breakpoints:
+```javascript
+<Flex gutter={1} wrap={[
+  [true],
+  [768, false]
+]}>
+  <Box width={[
+    [1],
+    [768, 1/2]
+  ]}>100% wide, 50% wide above 768</Box>
+  <Box width={[
+    [1],
+    [768, 1/2]
+  ]}>100% wide, 50% wide above 768</Box>
 </Flex>
 ```
 

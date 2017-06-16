@@ -18,10 +18,10 @@ export default class Box extends React.Component {
 
   render () {
     const { gutter } = this.context
-    const { w, children } = this.props
+    const { width, children } = this.props
 
     return <div className={toClassName([
-      ['width', w],
+      ['width', width],
       ['padding', gutter()]
     ])}>{children}</div>
   }

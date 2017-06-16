@@ -20,7 +20,7 @@ export default class Flex extends React.Component {
     super(p)
 
     this.state = {
-      gutter: p.g || 0
+      gutter: p.gutter || 0
     }
   }
 
@@ -30,7 +30,7 @@ export default class Flex extends React.Component {
 
   componentWillReceiveProps (p) {
     this.setState({
-      gutter: p.g || 0
+      gutter: p.gutter || 0
     }, () => {
       isClient && writeCSS()
     })
@@ -38,16 +38,16 @@ export default class Flex extends React.Component {
 
   render () {
     const { gutter } = this.state
-    const { children, center, end } = this.props
+    const { children, wrap, center, end } = this.props
     const align = center || end ? (
       center ? 'center' : 'end'
     ) : 'flex-start'
 
     return <div className={toClassName([
-      ['margin', gutter]
+      ['margin', gutter],
+      ['wrap', wrap]
     ])} style={{
       display: 'flex',
-      flexWrap: 'wrap',
       alignItems: align
     }}>{children}</div>
   }
