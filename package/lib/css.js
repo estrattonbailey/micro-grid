@@ -1,3 +1,4 @@
+import hash from '@f/hash-str'
 import { stripWhitespace, stripExtra, isNumber } from './util.js'
 
 let style = null
@@ -29,7 +30,10 @@ const prefixes = {
 const define = (type, c, value) => `.${c} ${defs[type](value)}`
 
 const createClassName = (type, value, breakpoint) =>
-  `${prefixes[type]}${value}${breakpoint ? '--' + breakpoint : ''}`
+  `${prefixes[type]}${hash(value)}${breakpoint ? '--' + breakpoint : ''}`
+
+
+window.hash = hash
 
 const getClassName = (type, value) => {
   let c = ' '

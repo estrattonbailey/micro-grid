@@ -1,6 +1,6 @@
 import React from 'react'
 import P from 'prop-types'
-import { isClient } from './util.js'
+import { isClient, cx } from './util.js'
 import { toClassName, writeCSS } from './css.js'
 
 export default class Box extends React.Component {
@@ -18,11 +18,14 @@ export default class Box extends React.Component {
 
   render () {
     const { gutter } = this.context
-    const { width, children } = this.props
+    const { width, className, children } = this.props
 
-    return <div className={toClassName([
-      ['width', width],
-      ['padding', gutter()]
-    ])}>{children}</div>
+    return <div className={cx(
+      className,
+      toClassName([
+        ['width', width],
+        ['padding', gutter()]
+      ])
+    )}>{children}</div>
   }
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import P from 'prop-types'
-import { isClient } from './util.js'
+import { isClient, cx } from './util.js'
 import { toClassName, writeCSS } from './css.js'
 
 export default class Flex extends React.Component {
@@ -38,15 +38,24 @@ export default class Flex extends React.Component {
 
   render () {
     const { gutter } = this.state
-    const { children, wrap, center, end } = this.props
+    const {
+      children,
+      wrap = false,
+      center,
+      end,
+      className
+    } = this.props
     const align = center || end ? (
       center ? 'center' : 'end'
     ) : 'flex-start'
 
-    return <div className={toClassName([
-      ['margin', gutter],
-      ['wrap', wrap]
-    ])} style={{
+    return <div className={cx(
+      className,
+      toClassName([
+        ['margin', gutter],
+        ['wrap', wrap]
+      ])
+    )} style={{
       display: 'flex',
       alignItems: align
     }}>{children}</div>

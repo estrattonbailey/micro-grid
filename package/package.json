@@ -39,6 +39,7 @@
     "react-dom": "^15.4.2"
   },
   "dependencies": {
+    "@f/hash-str": "^1.0.0",
     "microstate": "^0.4.0",
     "prop-types": "^15.5.10"
   }
