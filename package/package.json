@@ -1,8 +1,11 @@
 {
   "name": "micro-grid",
-  "version": "0.1.1",
+  "version": "0.2.1",
   "description": "",
   "main": "dist/index.js",
+  "files": [
+    "dist/lib/"
+  ],
   "license": "MIT",
   "repository": "https://github.com/estrattonbailey/micro-grid",
   "author": "estrattonbailey",
