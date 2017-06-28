@@ -4,11 +4,12 @@ Tiny, simple, zero-dependency flexbox grid for React. [Demo](http://estrattonbai
 [![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](http://standardjs.com)
 
 ## Features/Goals
-1. Configure widths, gutters, and flex alignment
+1. Configure widths, gutters, flex alignment, order, and offsets
 2. Configure arbitrary breakpoints and widths
-3. Outputs Real CSS™ and media queries
+3. Outputs real CSS and media queries
 4. Nestable
 5. Relative units for breakpoints and whitespace
+6. Lightweight **~3.8kb**
 
 ## Usage
 Grid with four items:
