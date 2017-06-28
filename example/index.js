@@ -69,6 +69,30 @@ const App = props => (
       </Box>
     </Flex>
 
+    <Flex gutter={1}>
+      <Box width={[
+        [1],
+        [500, 1 / 2],
+      ]} offset={[
+        [1000, 1/2]
+      ]}>
+        <div className="filler">
+          #1
+        </div>
+      </Box>
+      <Box width={[
+        [1],
+        [500, 1 / 2]
+      ]} order={[
+        ['unset'],
+        [1000, -1]
+      ]}>
+        <div className="filler">
+          #2
+        </div>
+      </Box>
+    </Flex>
+
     <div className="pv2">
       <pre><code>
         {`
@@ -131,6 +155,30 @@ const App = props => (
   ]}>
     <div className="filler">
       flex-auto
+    </div>
+  </Box>
+</Flex>
+
+<Flex gutter={1}>
+  <Box width={[
+    [1],
+    [500, 1 / 2],
+  ]} offset={[
+    [1000, 1/2]
+  ]}>
+    <div className="filler">
+      #1
+    </div>
+  </Box>
+  <Box width={[
+    [1],
+    [500, 1 / 2]
+  ]} order={[
+    ['unset'],
+    [1000, -1]
+  ]}>
+    <div className="filler">
+      #2
     </div>
   </Box>
 </Flex>

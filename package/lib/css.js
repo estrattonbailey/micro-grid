@@ -17,14 +17,18 @@ const defs = {
       `{ width: ${isNumber(val) ? (val * 100) + '%' : val} }`
     )
   ),
-  wrap: bool => `{ flex-wrap: ${bool ? 'wrap' : 'nowrap'} }`
+  wrap: bool => `{ flex-wrap: ${bool ? 'wrap' : 'nowrap'} }`,
+  order: num => `{ order: ${num} }`,
+  offset: val => `{ margin-left: ${isNumber(val) ? (val * 100) + '%' : val} }`
 }
 
 const prefixes = {
-  padding: 'p_',
-  margin: 'm_',
-  width: 'w_',
-  wrap: 'wr_'
+  padding: 'p',
+  margin: 'm',
+  width: 'w',
+  wrap: 'wrap',
+  order: 'order',
+  offset: 'offset',
 }
 
 const define = (type, c, value) => `.${c} ${defs[type](value)}`
