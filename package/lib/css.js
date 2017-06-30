@@ -1,7 +1,4 @@
-// import hash from '@f/hash-str'
-import { strip, isNum, isArr, keys } from './util.js'
-
-const hash = s => s.replace(/[^A-z0-9]/g,'').slice(0,2)
+import { strip, isNum, isArr, keys, hash } from './util.js'
 
 let style = null
 
