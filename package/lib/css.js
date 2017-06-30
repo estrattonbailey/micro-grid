@@ -1,25 +1,28 @@
-import hash from '@f/hash-str'
-import { stripWhitespace, stripExtra, isNumber } from './util.js'
+// import hash from '@f/hash-str'
+import { strip, isNum, isArr, keys } from './util.js'
+
+const hash = s => s.replace(/[^A-z0-9]/g,'').slice(0,2)
 
 let style = null
 
-const rules = {}
+const rules = {
+  base: {},
+  breakpoints: {}
+}
 
 const defs = {
-  padding: val =>
-    `{ padding-left: ${val/2}em; padding-right: ${val/2}em; }`,
-  margin: val =>
-    `{ margin-left: -${val/2}em; margin-right: -${val/2}em; }`,
+  padding: val => `{ padding-left: ${val/2}em; padding-right: ${val/2}em; }`,
+  margin: val => `{ margin-left: -${val/2}em; margin-right: -${val/2}em; }`,
   width: val => (
     /auto/.test(val) ? (
       `{ flex: 1 1 auto; min-width: 0; min-height: 0; }`
     ) : (
-      `{ width: ${isNumber(val) ? (val * 100) + '%' : val} }`
+      `{ width: ${isNum(val) ? (val * 100) + '%' : val} }`
     )
   ),
   wrap: bool => `{ flex-wrap: ${bool ? 'wrap' : 'nowrap'} }`,
   order: num => `{ order: ${num} }`,
-  offset: val => `{ margin-left: ${isNumber(val) ? (val * 100) + '%' : val} }`
+  offset: val => `{ margin-left: ${isNum(val) ? (val * 100) + '%' : val} }`
 }
 
 const prefixes = {
@@ -31,73 +34,68 @@ const prefixes = {
   offset: 'offset',
 }
 
-const define = (type, c, value) => `.${c} ${defs[type](value)}`
+const define = (tp, cn, val) => `.${cn} ${defs[tp](val)}`
 
-const createClassName = (type, value, breakpoint) =>
-  `${prefixes[type]}${hash(value)}${breakpoint ? '--' + breakpoint : ''}`
+const createClassName = (tp, conf) => {
+  const [ bp, val ] = isArr(conf) ? conf : [ null, conf ]
 
+  const cn = `⚡️${hash(tp) + hash(`${val}`)}${bp ? '--' + bp : ''}`
 
-window.hash = hash
+  !!bp ? (
+    rules.breakpoints[`${bp}`] = {
+      ...rules.breakpoints[`${bp}`] || {},
+      [cn]: define(tp, cn, val)
+    }
+  ) : rules.base[cn] = define(tp, cn, val)
 
-const getClassName = (type, value) => {
-  let c = ' '
-
-  if (Array.isArray(value)) {
-    value.map(([ breakpoint, val ]) => {
-      if (val === undefined) {
-        val = breakpoint
-        const cn = createClassName(type, stripExtra(`${val}`))
-        rules[cn] = define(type, cn, val)
-        c += cn + ' '
-        return
-      }
-
-      const cn = createClassName(type, stripExtra(`${val}`), breakpoint)
-
-      rules[`@${breakpoint}`] = rules[`@${breakpoint}`] || {}
-
-      rules[`@${breakpoint}`][cn] = define(type, cn, val)
-
-      c += cn + ' '
-    })
-  } else {
-    c = createClassName(type, stripExtra(`${value}`))
-    rules[c] = define(type, c, value)
-  }
-
-  return c
+  return cn
 }
 
-export const getCSS = (_rules = rules) => {
-  let base = ''
-  let breaks = ''
+const getClassName = (tp, conf) => {
+  let cn = ' '
 
-  Object.keys(_rules).forEach(key => {
-    if (/@/.test(key)) {
-      breaks += `@media (min-width: ${stripExtra(key) / 16}em) { ${getCSS(_rules[key])} }`
-    } else {
-      base += _rules[key] + ' '
-    }
-  })
+  isArr(conf) ? (
+    cn += conf.reduce((c, v) => {
+      c += createClassName(tp, v) + ' '
+      return c
+    }, '') + ' '
+  ) : (
+    cn += createClassName(tp, conf) + ' '
+  )
 
-  return stripWhitespace(base + ' ' + breaks)
-} 
+  return cn
+}
+
+const writeDefs = rules => keys(rules).reduce((def, cn) => {
+  def += rules[cn] + ' '
+  return def
+}, '')
+
+export const getCSS = () => {
+  const base = writeDefs(rules.base)
+
+  const breakpoints = keys(rules.breakpoints)
+    .sort((a, b) => a - b)
+    .reduce((def, bp) => {
+      def += `@media (min-width: ${parseInt(bp) / 16}em) { ${writeDefs(rules.breakpoints[bp])} }`
+      return def
+    }, '')
+
+  return `/* @see https://git.io/micro-grid */${strip(base + ' ' + breakpoints)}`
+}
+
 export const writeCSS = () => {
   if (!style) {
     style = document.createElement('style')
     style.id = 'grid-style'
     document.head.appendChild(style)
   }
-
-  style.innerHTML = getCSS(rules)
+  style.innerHTML = getCSS()
 }
 
-export const toClassName = arr => stripWhitespace(
-  arr.reduce(
-    (res, [ type, value ]) => {
-      res += getClassName(type, value) + ' '
-      return res
-    },
-    ''
-  )
+export const toClassName = conf => strip(
+  keys(conf).reduce((cn, k) => {
+    cn += getClassName(k, conf[k])
+    return cn
+  }, '')
 )

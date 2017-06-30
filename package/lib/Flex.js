@@ -1,11 +1,11 @@
 import React from 'react'
-import P from 'prop-types'
+import PropTypes from 'prop-types'
 import { isClient, cx } from './util.js'
 import { toClassName, writeCSS } from './css.js'
 
 export default class Flex extends React.Component {
   static childContextTypes = {
-    gutter: P.func
+    gutter: PropTypes.func
   }
 
   getChildContext () {
@@ -38,6 +38,7 @@ export default class Flex extends React.Component {
 
   render () {
     const { gutter } = this.state
+
     const {
       children,
       wrap = false,
@@ -45,16 +46,17 @@ export default class Flex extends React.Component {
       end,
       className
     } = this.props
+
     const align = center || end ? (
       center ? 'center' : 'end'
     ) : 'flex-start'
 
     return <div className={cx(
       className,
-      toClassName([
-        ['margin', gutter],
-        ['wrap', wrap]
-      ])
+      toClassName({
+        margin: gutter,
+        wrap: wrap
+      })
     )} style={{
       display: 'flex',
       alignItems: align

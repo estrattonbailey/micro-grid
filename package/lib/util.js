@@ -1,9 +1,11 @@
 export const isClient = typeof window !== 'undefined'
 
-export const stripWhitespace = (str = '') => str.replace(/\s\s/, ' ').trim()
+export const strip = (str = '') => str.replace(/\s\s/, ' ').trim()
 
-export const stripExtra = (w = '') => `${w}`.replace(/\.|@/g, '')
+export const isNum = n => typeof n === 'number'
 
-export const isNumber = n => typeof n === 'number'
+export const isArr = a => Array.isArray(a)
 
-export const cx = (className = '', classes = '') => stripWhitespace(className + ' ' + classes)
+export const keys = o => Object.keys(o)
+
+export const cx = (className = '', classes = '') => strip(className + ' ' + classes)

@@ -8,21 +8,21 @@ const App = props => (
 
     <Flex wrap={true} gutter={1}>
       <Box width={[
-        [1],
+        1,
         [500, 1/2],
         [1000, 1/4]
       ]}>
         <div className="filler">25%</div>
       </Box>
       <Box width={[
-        [1],
+        1,
         [500, 1/2],
         [1000, 1/4]
       ]}>
         <div className="filler">25%</div>
       </Box>
       <Box width={[
-        [1],
+        1,
         [500, 1/2],
         [1000, 1/4]
       ]}>
@@ -38,7 +38,7 @@ const App = props => (
 
       </Box>
       <Box width={[
-        [1],
+        1,
         [500, 1/2],
         [1000, 1/4]
       ]}>
@@ -47,11 +47,11 @@ const App = props => (
     </Flex>
 
     <Flex gutter={1} wrap={[
-      [true],
+      true,
       [500, false]
     ]}>
       <Box width={[
-        [1],
+        1,
         [500, '200px'],
       ]}>
         <div className="filler">
@@ -59,7 +59,7 @@ const App = props => (
         </div>
       </Box>
       <Box width={[
-        [1],
+        1,
         [500, 3/4],
         [500, 'auto'],
       ]}>
@@ -71,7 +71,7 @@ const App = props => (
 
     <Flex gutter={1}>
       <Box width={[
-        [1],
+        1,
         [500, 1 / 2],
       ]} offset={[
         [1000, 1/2]
@@ -81,10 +81,10 @@ const App = props => (
         </div>
       </Box>
       <Box width={[
-        [1],
+        1,
         [500, 1 / 2]
       ]} order={[
-        ['unset'],
+        'unset',
         [1000, -1]
       ]}>
         <div className="filler">
@@ -191,4 +191,4 @@ const App = props => (
 
 render(<App/>, document.getElementById('root'))
 
-console.log('micro-grid rendered CSS:\n\n', getCSS())
+console.log(`micro-grid rendered CSS:\n \n${getCSS()}`)
