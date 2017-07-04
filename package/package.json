@@ -1,6 +1,6 @@
 {
   "name": "micro-grid",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "",
   "main": "dist/index.js",
   "files": [
@@ -42,6 +42,7 @@
     "react-dom": "^15.4.2"
   },
   "dependencies": {
+    "@f/hash-str": "^1.0.0",
     "prop-types": "^15.5.10"
   }
 }

@@ -36,7 +36,7 @@ const define = (tp, cn, val) => `.${cn} ${defs[tp](val)}`
 const createClassName = (tp, conf) => {
   const [ bp, val ] = isArr(conf) ? conf : [ null, conf ]
 
-  const cn = `⚡️${hash(tp) + hash(`${val}`)}${bp ? '--' + bp : ''}`
+  const cn = `⚡︎${hash(tp) + hash(`${val}`)}${bp ? '--' + bp : ''}`
 
   !!bp ? (
     rules.breakpoints[`${bp}`] = {
