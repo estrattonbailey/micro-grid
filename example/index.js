@@ -61,7 +61,7 @@ const App = props => (
       <Box width={[
         1,
         [500, 3/4],
-        [500, 'auto'],
+        [500, 'calc(100% - 200px)'],
       ]}>
         <div className="filler">
           flex-auto

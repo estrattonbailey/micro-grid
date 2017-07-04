@@ -1,4 +1,5 @@
-import { strip, isNum, isArr, keys, hash } from './util.js'
+import hash from './hash.js'
+import { strip, isNum, isArr, keys, sanitize } from './util.js'
 
 let style = null
 
@@ -36,7 +37,7 @@ const define = (tp, cn, val) => `.${cn} ${defs[tp](val)}`
 const createClassName = (tp, conf) => {
   const [ bp, val ] = isArr(conf) ? conf : [ null, conf ]
 
-  const cn = `⚡︎${hash(tp) + hash(`${val}`)}${bp ? '--' + bp : ''}`
+  const cn = `⚡︎${hash(sanitize(tp + val))}${bp ? '--' + bp : ''}`
 
   !!bp ? (
     rules.breakpoints[`${bp}`] = {

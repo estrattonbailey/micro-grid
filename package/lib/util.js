@@ -1,6 +1,4 @@
-import h from '@f/hash-str'
-
-export const hash = s => h(s)
+export const sanitize = s => s.replace(/[^A-z0-9]/g, '')
 
 export const isClient = typeof window !== 'undefined'
 
