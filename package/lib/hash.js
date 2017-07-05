@@ -3,9 +3,7 @@ let code = 97
 
 const hashes = {}
 
-const hash = val => {
-  let res = ''
-
+const hash = (val, res = '') => {
   for (let i = 0; i < itt; i++) {
     res += String.fromCharCode(code)
   }

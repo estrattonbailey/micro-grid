@@ -37,29 +37,22 @@ export default class Flex extends React.Component {
   }
 
   render () {
-    const { gutter } = this.state
-
     const {
       children,
+      className,
       wrap = false,
-      center,
-      end,
-      className
+      align
     } = this.props
-
-    const align = center || end ? (
-      center ? 'center' : 'end'
-    ) : 'flex-start'
 
     return <div className={cx(
       className,
       toClassName({
-        margin: gutter,
+        margin: this.state.gutter,
         wrap: wrap
       })
     )} style={{
       display: 'flex',
-      alignItems: align
+      alignItems: align || 'flex-start'
     }}>{children}</div>
   }
 }
