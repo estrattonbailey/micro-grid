@@ -1,15 +1,14 @@
 # micro-grid
-Tiny, simple, zero-dependency flexbox grid for React. [Demo](http://estrattonbailey.com/micro-grid/) 🍻
+Tiny, simple, zero-dependency flexbox grid for React. Outputs real CSS. **2.6kb gzipped.**
 
 [![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](http://standardjs.com)
 
 ## Features/Goals
 1. Configure widths, gutters, flex alignment, order, and offsets
-2. Configure arbitrary breakpoints and widths
+2. Configure arbitrary breakpoints and values for all attributes
 3. Outputs real CSS and media queries
 4. Nestable
 5. Relative units for breakpoints and whitespace
-6. Lightweight **<4kb**
 
 ## Usage
 Grid with four items:

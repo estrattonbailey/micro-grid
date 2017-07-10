@@ -41,7 +41,8 @@ export default class Flex extends React.Component {
       children,
       className,
       wrap = false,
-      align
+      alignItems = 'flex-start',
+      justifyContent = 'flex-start'
     } = this.props
 
     return <div className={cx(
@@ -52,7 +53,8 @@ export default class Flex extends React.Component {
       })
     )} style={{
       display: 'flex',
-      alignItems: align || 'flex-start'
+      alignItems: alignItems,
+      justifyContent: justifyContent
     }}>{children}</div>
   }
 }
