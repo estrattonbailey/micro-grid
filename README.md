@@ -1,3 +1,5 @@
+> ⚠️ this library is deprecated in favor of [ffx](https://github.com/estrattonbailey/ffx)
+
 # micro-grid
 Tiny, simple, zero-dependency flexbox grid for React. Outputs real CSS. **2.6kb gzipped.**
 
